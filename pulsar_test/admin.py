@@ -119,7 +119,7 @@ class Admin:
         print(url)
         async with aiohttp.request('get', url) as res:
             if res.status is 200:
-                content = str(await res.content.read(), 'utf-8')
+                content = str(await res.content.readany(), 'utf-8')
                 print('getBacklog', content)
                 return content
 
