@@ -39,15 +39,15 @@ class Admin:
                 print('getMessageById', content)
                 return content
 
-    async def skip(self, subscription_name, num):
+    async def skip(self,topic, subscription_name, num):
         """
         skip num消息
         :param subscription_name:
         :param num:
         :return:
         """
-        url = self.url + "/subscription/{subName}/skip/{numMessages}"\
-            .format(subName=subscription_name,numMessages = num)
+        url = self.url + "/{topic}/subscription/{subName}/skip/{numMessages}"\
+            .format(topic=topic,subName=subscription_name,numMessages = num)
         print(url)
         async with aiohttp.request('get', url) as res:
             if res.status is 200:
@@ -55,13 +55,13 @@ class Admin:
                 print('skip', content)
                 return content
 
-    async def skip_all(self, subscription_name):
+    async def skip_all(self,topic, subscription_name):
         """
         skip所有消息
         :param subscription_name:
         :return:
         """
-        url = self.url + "/subscription/{subName}/skip_all".format(subName = subscription_name)
+        url = self.url + "/{topic}/subscription/{subName}/skip_all".format(topic=topic, subName = subscription_name)
         print(url)
         async with aiohttp.request('get', url) as res:
             if res.status is 200:
@@ -69,13 +69,13 @@ class Admin:
                 print('skip_all', content)
                 return content
 
-    async def resetCursor(self, subscription_name):
+    async def resetCursor(self,topic, subscription_name):
         """
         重置游标
         :param subscription_name:
         :return:
         """
-        url = self.url + "/subscription/{subName}/resetcursor".format(subName = subscription_name)
+        url = self.url + "/{topic}/subscription/{subName}/resetcursor".format(topic=topic, subName = subscription_name)
         print(url)
         async with aiohttp.request('get', url) as res:
             if res.status is 200:
@@ -93,7 +93,7 @@ class Admin:
         print(url)
         async with aiohttp.request('get', url) as res:
             if res.status is 200:
-                content = str(await res.content.read(), 'utf-8')
+                content = str(await res.content.readany(), 'utf-8')
                 print('lastMessageId', content)
                 return content
 
@@ -130,13 +130,13 @@ async def main():
         'ispersistent':True,
     }
     admin = Admin(**info)
-    await admin.getMessageById('topic-1','sub-1',1)
+    await admin.getMessageById('topic-1', 'sub-1',1)
     await admin.getAllTopic()
     await admin.getBacklog('topic-1')
     await admin.lastMessageId('topic-1')
-    await admin.resetCursor('sub-1')
-    await admin.skip('sub-1',2)
-    await admin.skip_all('sub-1')
+    await admin.resetCursor('topic-1','sub-1')
+    await admin.skip('topic-1','sub-1',2)
+    await admin.skip_all('topic-1', 'sub-1')
 
 if __name__ == '__main__':
     loop = asyncio.get_event_loop()
