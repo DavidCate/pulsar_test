@@ -1,0 +1,17 @@
+
+Apache Pulsar介绍：
+http://ifeve.com/apache-pulsar%E4%BB%8B%E7%BB%8D/
+
+深入了解pulsar：
+https://jack-vanlightly.com/blog/2018/10/2/understanding-how-apache-pulsar-works
+
+pulsar可靠性测试：
+https://jack-vanlightly.com/blog/2018/10/21/how-to-not-lose-messages-on-an-apache-pulsar-cluster
+
+总结：
+parsar优点：
+    1.存储与消息服务分离，结合bookkeeper防护功能，可以避免消息丢失和服务脑裂
+    2.将topic分解为段和块，在bookkeeper集群中分发存储，使pulsar集群可以轻松扩展，新数据自动写入
+    新的bookie，不需要重新平衡数据
+    3.低延迟
+    4.高吞吐量
