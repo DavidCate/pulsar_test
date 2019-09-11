@@ -3,7 +3,7 @@ from pulsar import *
 from mango_pulsar.MangoPulsarAdmin import MangoPulsarAdmin
 
 class MangoPulsarClient(pulsar.Client):
-    __admin=None
+    admin=None
 
     def __init__(self,service_url,
                  http_service_url,
@@ -25,7 +25,7 @@ class MangoPulsarClient(pulsar.Client):
                                                tls_trust_certs_file_path,
                                                tls_allow_insecure_connection,
                                                tls_validate_hostname)
-        self.__admin=MangoPulsarAdmin(http_service_url)
+        self.admin=MangoPulsarAdmin(http_service_url)
 
     def create_producer(self, topic, producer_name=None, schema=schema.BytesSchema(), initial_sequence_id=None,
                         send_timeout_millis=30000, compression_type=CompressionType.NONE, max_pending_messages=1000,
@@ -61,9 +61,3 @@ class MangoPulsarClient(pulsar.Client):
 
     def close(self):
         super().close()
-
-    def create_topic(self,topic):
-        self.__admin.create_topic(topic)
-
-    def list_topics_under_namespace(self,tenant,namespace):
-        return self.__admin.list_topics_under_namespace(tenant,namespace)

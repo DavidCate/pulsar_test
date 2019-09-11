@@ -12,6 +12,8 @@ def test():
 
     mango_client = mango_pulsar.MangoPulsarClient(SERVICE_URL,REST_URL)
 
+    mango_client.admin.persistent_topic.list_topics_under_namespace()
+
     print(mango_client.list_topics_under_namespace('public','default'))
     producer=mango_client.create_producer(
         TOPIC,
