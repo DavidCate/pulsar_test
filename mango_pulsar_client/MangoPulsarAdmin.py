@@ -1,15 +1,15 @@
 import requests
 import ujson
-from mango_pulsar.PersistentTopic import PersistentTopic
-from mango_pulsar.Namespaces import Namespaces
-from mango_pulsar.Tenants import Tenants
-from mango_pulsar.Bookies import Bookies
-from mango_pulsar.Brokers import Brokers
-from mango_pulsar.BrokerStats import BrokerStats
-from mango_pulsar.Clusters import Clusters
-from mango_pulsar.NonPersistentTopic import NonPersistentTopic
-from mango_pulsar.ResourceQuotas import ResourceQuotas
-from mango_pulsar.Schemas import Schemas
+from mango_pulsar_client.PersistentTopic import PersistentTopic
+from mango_pulsar_client.Namespaces import Namespaces
+from mango_pulsar_client.Tenants import Tenants
+from mango_pulsar_client.Bookies import Bookies
+from mango_pulsar_client.Brokers import Brokers
+from mango_pulsar_client.BrokerStats import BrokerStats
+from mango_pulsar_client.Clusters import Clusters
+from mango_pulsar_client.NonPersistentTopic import NonPersistentTopic
+from mango_pulsar_client.ResourceQuotas import ResourceQuotas
+from mango_pulsar_client.Schemas import Schemas
 
 class MangoPulsarAdmin():
     def __init__(self,service_url):

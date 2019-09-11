@@ -1,6 +1,6 @@
 import pulsar
 from pulsar import *
-from mango_pulsar.MangoPulsarAdmin import MangoPulsarAdmin
+from mango_pulsar_client.MangoPulsarAdmin import MangoPulsarAdmin
 
 class MangoPulsarClient(pulsar.Client):
     admin=None

@@ -1,4 +1,4 @@
-import mango_pulsar
+import mango_pulsar_client
 import pulsar
 
 
@@ -10,7 +10,7 @@ def test():
     SUBSCRIPTION = "sub-1"
     PUBLISH = "pub-1"
 
-    mango_client = mango_pulsar.MangoPulsarClient(SERVICE_URL,REST_URL)
+    mango_client = mango_pulsar_client.MangoPulsarClient(SERVICE_URL, REST_URL)
 
 
 
