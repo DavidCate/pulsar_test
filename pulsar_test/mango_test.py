@@ -12,6 +12,8 @@ def test():
 
     mango_client = mango_pulsar.MangoPulsarClient(SERVICE_URL,REST_URL)
 
+
+
     mango_client.admin.persistent_topic.list_topics_under_namespace()
 
     print(mango_client.list_topics_under_namespace('public','default'))
@@ -19,6 +21,7 @@ def test():
         TOPIC,
         PUBLISH
     )
+
 
     for index in range(10):
         producer.send("sdddfasdfdsfds".encode('utf-8'))
