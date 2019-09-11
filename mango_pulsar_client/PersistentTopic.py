@@ -12,7 +12,8 @@ class PersistentTopic():
             return ujson.loads(response.content.decode('utf-8'))
         else:
             msg = {
-                'msg': 'http请求失败'
+                'msg': 'http请求失败',
+                'content':response.content.decode('utf-8')
             }
             return msg
 
@@ -45,7 +46,8 @@ class PersistentTopic():
             return ujson.loads(response.content.decode('utf-8'))
         else:
             msg = {
-                'msg': 'http请求失败'
+                'msg': 'http请求失败',
+                'content':response.content.decode('utf-8')
             }
             return msg
 

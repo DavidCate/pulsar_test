@@ -13,10 +13,18 @@ def test():
     mango_client = mango_pulsar_client.MangoPulsarClient(SERVICE_URL, REST_URL)
 
 
+    res=mango_client.admin.persistent_topic.create_non_partitioned_topic('liuchaozhi','main','xiaodi')
+    print(res)
 
-    mango_client.admin.persistent_topic.list_topics_under_namespace()
 
-    print(mango_client.list_topics_under_namespace('public','default'))
+
+    res=mango_client.admin.persistent_topic.delete('public','default','liuchaozhi')
+    print(res)
+
+    res=mango_client.admin.persistent_topic.list_topics_under_namespace('public','default')
+    print(res)
+
+    print(mango_client.admin.persistent_topic.list_topics_under_namespace('public','default'))
     producer=mango_client.create_producer(
         TOPIC,
         PUBLISH
