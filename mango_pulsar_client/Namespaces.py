@@ -5,4 +5,251 @@ class Namespaces():
     def __init__(self,service_url):
         self.__service_url=service_url
 
+    def get_all_namespaces_that_are_grouped_by_given_anti_affinity_group_in_a_given_cluster(self,cluster,group,tenant):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{cluster}/antiAffinity/{group}?tenant={tenant}'.format(cluster=cluster,group=group,tenant=tenant)
+        response = requests.get(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def get_the_bookie_affinity_group_from_namespace_local_policy(self,property,namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{property}/{namespace}/persistence/bookieAffinity'.format(property=property,namespace=namespace)
+        response = requests.get(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def delete_the_bookie_affinity_group_from_namespace_local_policy(self,property,namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{property}/{namespace}/persistence/bookieAffinity'.format(
+            property=property, namespace=namespace)
+        response = requests.delete(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def get_the_list_of_all_the_namespaces_for_a_certain_tenant(self,tenant):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}'.format(
+            tenant=tenant)
+        response = requests.get(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def get_the_dump_all_the_policies_specified_for_a_namespace(self,tenant,namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}'.format(
+            tenant=tenant,namespace=namespace)
+        response = requests.get(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def creates_a_new_namespace_with_the_specified_policies(self,tenant,namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}'.format(
+            tenant=tenant, namespace=namespace)
+        response = requests.put(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def delete_a_namespace_and_all_the_topics_under_it(self,tenant,namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}'.format(
+            tenant=tenant, namespace=namespace)
+        response = requests.delete(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def get_anti_affinity_group_of_a_namespace(self,tenant,namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/antiAffinity'.format(
+            tenant=tenant, namespace=namespace)
+        response = requests.get(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def set_anti_affinity_group_for_a_namespace(self,tenant,namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/antiAffinity'.format(
+            tenant=tenant, namespace=namespace)
+        response = requests.post(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def remove_anti_affinity_group_of_a_namespace(self,tenant,namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/antiAffinity'.format(
+            tenant=tenant, namespace=namespace)
+        response = requests.delete(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def set_a_backlog_quota_for_all_the_topics_on_a_namespace(self,tenant,namespace,backlogQuotaType):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/backlogQuota?backlogQuotaType={backlogQuotaType}'.format(
+            tenant=tenant, namespace=namespace,backlogQuotaType=backlogQuotaType)
+        response = requests.post(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def remove_a_backlog_quota_policy_from_a_namespace(self,tenant,namespace,backlogQuotaType):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/backlogQuota?backlogQuotaType={backlogQuotaType}'.format(
+            tenant=tenant, namespace=namespace, backlogQuotaType=backlogQuotaType)
+        response = requests.delete(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def get_backlog_quota_map_on_a_namespace(self,tenant,namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/backlogQuotaMap'.format(
+            tenant=tenant, namespace=namespace)
+        response = requests.get(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def get_the_bundles_split_data(self,tenant,namespace):
+        SERVER_URL = self.__service_url + 'https://pulsar.apache.org/admin/v2/namespaces/{tenant}/{namespace}/bundles'.format(
+            tenant=tenant, namespace=namespace)
+        response = requests.get(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def clear_backlog_for_all_topics_on_a_namespace(self,tenant,namespace,authoritative):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/clearBacklog?authoritative={authoritative}'.format(
+            tenant=tenant, namespace=namespace,authoritative=authoritative)
+        response = requests.post(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def clear_backlog_for_a_given_subscription_on_all_topics_on_a_namespace(self,tenant,namespace,subscription,authoritative):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/clearBacklog/{subscription}?authoritative={authoritative}'.format(
+            tenant=tenant, namespace=namespace, subscription=subscription,authoritative=authoritative)
+        response = requests.post(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def maximum_number_of_uncompacted_bytes_in_topics_before_compaction_is_triggered(self,tenant,namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/compactionThreshold'.format(
+            tenant=tenant, namespace=namespace)
+        response = requests.get(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def set_maximum_number_of_uncompacted_bytes_in_a_topic_before_compaction_is_triggered(self,tenant,namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/compactionThreshold'.format(
+            tenant=tenant, namespace=namespace)
+        response = requests.put(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def enable_or_disable_broker_side_deduplication_for_all_topics_in_a_namespace(self,tenant,namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/deduplication'.format(
+            tenant=tenant, namespace=namespace)
+        response = requests.post(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def get_dispatch_rate_configured_for_the_namespace(self,tenant,namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/dispatchRate'.format(
+            tenant=tenant, namespace=namespace)
+        response = requests.get(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def set_dispatch_rate_throttling_for_all_topics_of_the_namespace(self,tenant,namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/dispatchRate'.format(
+            tenant=tenant, namespace=namespace)
+        response = requests.post(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def message_encryption_is_required_or_not_for_all_topics_in_a_namespace(self,tenant,namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/encryptionRequired'.format(
+            tenant=tenant, namespace=namespace)
+        response = requests.post(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def get_maxConsumersPerSubscription_config_on_a_namespace(self,tenant,namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/maxConsumersPerSubscription'.format(
+            tenant=tenant, namespace=namespace)
+        response = requests.get(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def set_maxConsumersPerTopic_configuration_on_a_namespace(self,tenant,namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/maxConsumersPerTopic'.format(
+            tenant=tenant, namespace=namespace)
+        response = requests.post(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def get_maxProducersPerTopic_config_on_a_namespace(self,tenant,namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/maxProducersPerTopic'.format(
+            tenant=tenant, namespace=namespace)
+        response = requests.get(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
 
