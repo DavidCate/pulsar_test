@@ -342,3 +342,90 @@ class Namespaces():
             'content': response.content.decode('utf-8')
         }
         return msg
+
+    def revoke_all_permissions_to_a_role_on_a_namespace(self,tenant, namespace, role):
+        """
+        撤销角色在某个命名空间的所有的权限
+        :param tenant:
+        :param namespace:
+        :param role:
+        :return:
+        """
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/permissions/{role}'\
+            .format(tenant=tenant, namespace=namespace, role=role)
+        response = requests.delete(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def get_the_persistence_configuration_for_a_namespace(self, tenant, namespace):
+        """
+        获取命名空间的持久性配置
+        :param tenant:
+        :param namespace:
+        :return:
+        """
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/persistence'\
+            .format(tenant=tenant, namespace=namespace)
+        response = requests.get(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def set_the_persistence_configuration_or_all_the_topics_on_a_namespace(self,tenant,namespace):
+        """
+        为命名空间上的所有主题设置持久性配置
+        :param tenant:
+        :param namespace:
+        :return:
+        """
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/persistence'\
+            .format(tenant=tenant, namespace=namespace)
+        response = requests.post(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def set_the_bookie_affinity_group_to_namespace_persistent_policy(self, tenant, namespace):
+        """
+        将Bookie关联组设置为命名空间持久策略
+        :param tenant:
+        :param namespace:
+        :return:
+        """
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/persistence/bookieAffinity'\
+            .format(tenant=tenant, namespace=namespace)
+        response = requests.post(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def get_the_replication_clusters_for_a_namespace(self, tenant, namespace):
+        """
+
+        :param tenant:
+        :param namespace:
+        :return:
+        """
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/replication'\
+            .format(tenant=tenant, namespace=namespace)
+        response = requests.get(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def set_the_replication_clusters_for_a_namespace(self):
+        """
+
+        :return:
+        """
