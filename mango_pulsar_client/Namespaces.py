@@ -5,6 +5,9 @@ class Namespaces():
     def __init__(self,service_url):
         self.__service_url=service_url
 
+    '''
+    
+    '''
     def get_all_namespaces_that_are_grouped_by_given_anti_affinity_group_in_a_given_cluster(self,cluster,group,tenant):
         SERVER_URL = self.__service_url + '/admin/v2/namespaces/{cluster}/antiAffinity/{group}?tenant={tenant}'.format(cluster=cluster,group=group,tenant=tenant)
         response = requests.get(SERVER_URL)
@@ -14,6 +17,9 @@ class Namespaces():
         }
         return msg
 
+    '''
+    
+    '''
     def get_the_bookie_affinity_group_from_namespace_local_policy(self,property,namespace):
         SERVER_URL = self.__service_url + '/admin/v2/namespaces/{property}/{namespace}/persistence/bookieAffinity'.format(property=property,namespace=namespace)
         response = requests.get(SERVER_URL)
@@ -33,6 +39,9 @@ class Namespaces():
         }
         return msg
 
+    '''
+    获取某个租户下的所有namespace
+    '''
     def get_the_list_of_all_the_namespaces_for_a_certain_tenant(self,tenant):
         SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}'.format(
             tenant=tenant)
@@ -52,6 +61,7 @@ class Namespaces():
             'content': response.content.decode('utf-8')
         }
         return msg
+
 
     def creates_a_new_namespace_with_the_specified_policies(self,tenant,namespace):
         SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}'.format(
