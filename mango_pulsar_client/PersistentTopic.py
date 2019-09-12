@@ -5,6 +5,9 @@ class PersistentTopic():
     def __init__(self,service_url):
         self.__service_url=service_url
 
+    '''
+    获取指定的namespace下的所有topic 
+    '''
     def get_the_list_of_topics_under_namespace(self,tenant,namespace):
         SERVER_URL= self.__service_url+'/admin/v2/persistent/{tenant}/{namespace}'.format(tenant=tenant,namespace=namespace)
         response=requests.get(SERVER_URL)
@@ -14,8 +17,10 @@ class PersistentTopic():
         }
         return msg
 
-
-    def get_thie_list_of_partitioned_topics_under_namespace(self,tenant,namespace):
+    '''
+    获取指定namespace下的所有分区topic
+    '''
+    def get_the_list_of_partitioned_topics_under_namespace(self,tenant,namespace):
         SERVER_URL=self.__service_url+'/admin/v2/persistent/{tenant}/{namespace}/partitioned'.format(tenant=tenant,namespace=namespace)
         response=requests.get(SERVER_URL)
         msg = {
@@ -24,6 +29,9 @@ class PersistentTopic():
         }
         return msg
 
+    '''
+    创建一个普通的不分区的topic
+    '''
     def create_non_partitioned_topic(self,tenant,namespace,topic):
         SERVER_URL = self.__service_url + '/admin/v2/persistent/{tenant}/{namespace}/{topic}'.format(tenant=tenant,namespace=namespace,topic=topic)
         response = requests.put(SERVER_URL)
@@ -33,6 +41,9 @@ class PersistentTopic():
         }
         return msg
 
+    '''
+    删除一个topic
+    '''
     def delete_a_topic(self,tenant,namespace,topic):
         SERVER_URL=self.__service_url+'/admin/v2/persistent/{tenant}/{namespace}/{topic}'.format(tenant=tenant,namespace=namespace,topic=topic)
         response=requests.delete(SERVER_URL)
@@ -42,6 +53,9 @@ class PersistentTopic():
         }
         return msg
 
+    '''
+    给某个topic的所有订阅者的消息设置过期时间
+    '''
     def expiry_messages_on_all_subscriptions_of_topic(self,tenant,namespace,topic,expireTimeInSeconds):
         SERVER_URL = self.__service_url + '/admin/v2/persistent/{tenant}/{namespace}/{topic}/all_subscription/expireMessages/{expireTimeInSeconds}'.format(tenant=tenant,
                                                                                                      namespace=namespace,
@@ -53,7 +67,9 @@ class PersistentTopic():
         }
         return msg
 
-
+    '''
+    不清楚
+    '''
     def get_estimated_backlog_for_offline_topic(self,tenant,namespace,topic):
         SERVER_URL = self.__service_url + '/admin/v2/persistent/{tenant}/{namespace}/{topic}/backlog'.format(
             tenant=tenant,
@@ -66,6 +82,9 @@ class PersistentTopic():
         }
         return msg
 
+    '''
+    获取某个topic的消息压缩操作状态
+    '''
     def get_the_status_of_a_compaction_operation_for_a_topic(self,tenant,namespace,topic):
         SERVER_URL = self.__service_url + '/admin/v2/persistent/{tenant}/{namespace}/{topic}/compaction'.format(
             tenant=tenant,
@@ -78,6 +97,9 @@ class PersistentTopic():
         }
         return msg
 
+    '''
+    对某个topic触发一个压缩操作
+    '''
     def trigger_a_compaction_operation_on_a_topic(self,tenant,namespace,topic):
         SERVER_URL = self.__service_url + '/admin/v2/persistent/{tenant}/{namespace}/{topic}/compaction'.format(
             tenant=tenant,
