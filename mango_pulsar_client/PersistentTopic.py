@@ -125,7 +125,7 @@ class PersistentTopic():
             }
             return msg
 
-    def Peek_nth_message_on_a_topic_subscription(self,tenant,namespace,topic,subName,messagePosition):
+    def peek_nth_message_on_a_topic_subscription(self,tenant,namespace,topic,subName,messagePosition):
         SERVER_URL = self.__service_url + 'https://pulsar.apache.org/admin/v2/persistent/{tenant}/{namespace}/{topic}/subscription/{subName}/position/{messagePosition}'.format(
             tenant=tenant,
             namespace=namespace,
