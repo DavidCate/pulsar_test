@@ -4,6 +4,16 @@ class Clusters():
     def __init__(self,service_url):
         self.__service_url=service_url
 
+    def get_the_list_of_all_the_Pulsar_clusters(self,):
+        SERVER_URL = self.__service_url + '/admin/v2/clusters'
+        response = requests.get(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+
     def get_the_namespace_isolation_policies_assigned_to_the_cluster(self,cluster:str):
         SERVER_URL = self.__service_url + '/admin/v2/clusters/{cluster}/namespaceIsolationPolicies'.format(cluster=cluster)
         response = requests.get(SERVER_URL)
