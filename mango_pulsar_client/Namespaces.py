@@ -409,12 +409,6 @@ class Namespaces():
         return msg
 
     def get_the_replication_clusters_for_a_namespace(self, tenant, namespace):
-        """
-
-        :param tenant:
-        :param namespace:
-        :return:
-        """
         SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/replication'\
             .format(tenant=tenant, namespace=namespace)
         response = requests.get(SERVER_URL)
@@ -424,8 +418,233 @@ class Namespaces():
         }
         return msg
 
-    def set_the_replication_clusters_for_a_namespace(self):
-        """
+    def set_the_replication_clusters_for_a_namespace(self, tenant, namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/replication'\
+            .format(tenant=tenant, namespace=namespace)
+        response = requests.post(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
 
-        :return:
-        """
+    def get_replicator_dispatch_rate_configured_for_the_namespace(self,tenant,namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/replicatorDispatchRate'\
+            .format(tenant=tenant, namespace=namespace)
+        response = requests.get(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def set_replicator_dispatch_rate_throttling_for_all_topics_of_the_namespace(self, tenant, namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/replicatorDispatchRate'\
+            .format(tenant=tenant, namespace=namespace)
+        response = requests.post(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def get_retention_config_on_a_namespace(self,tenant, namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/retention'\
+            .format(tenant=tenant, namespace=namespace)
+        response = requests.get(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def set_retention_configuration_on_a_namespace(self, tenant, namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/retention'\
+            .format(tenant=tenant, namespace=namespace)
+        response = requests.post(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def the_strategy_used_to_check_the_compatibility_of_new_schemas_provided_by_producers_before_automatically_updating_the_schema(self,tenant, namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/schemaAutoUpdateCompatibilityStrategy'\
+            .format(tenant=tenant, namespace=namespace)
+        response = requests.get(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def update_the_strategy_used_to_check_the_compatibility_of_new_schemas_provided_by_producers_before_automatically_updating_the_schema(self, tenant, namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/schemaAutoUpdateCompatibilityStrategy'\
+            .format(tenant=tenant, namespace=namespace)
+        response = requests.put(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def get_schema_validation_enforced_flag_for_namespace(self, tenant, namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/schemaValidationEnforced'\
+            .format(tenant=tenant, namespace=namespace)
+        response = requests.get(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def set_schema_validation_enforced_flag_on_namespace(self, tenant, namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/schemaValidationEnforced'\
+            .format(tenant=tenant, namespace=namespace)
+        response = requests.post(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def get_subscribe_rate_configured_for_the_namespace(self, tenant, namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/subscribeRate'\
+            .format(tenant=tenant, namespace=namespace)
+        response = requests.get(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def set_subscribe_rate_throttling_for_all_topics_of_the_namespace(self, tenant, namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/subscribeRate'\
+            .format(tenant=tenant, namespace=namespace)
+        response = requests.post(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def  set_a_subscription_auth_mode_for_all_the_topics_on_a_namespace(self, tenant, namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/subscriptionAuthMode'\
+            .format(tenant=tenant, namespace=namespace)
+        response = requests.post(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def get_subscription_dispatch_rate_configured_for_the_namespace(self, tenant, namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/subscriptionDispatchRate'\
+            .format(tenant=tenant, namespace=namespace)
+        response = requests.get(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+
+    def set_subscription_dispatch_rate_throttling_for_all_topics_of_the_namespace(self, tenant, namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/subscriptionDispatchRate'\
+            .format(tenant=tenant, namespace=namespace)
+        response = requests.post(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def get_the_list_of_all_the_topics_under_a_certain_namespace(self, tenant, namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/topics'\
+            .format(tenant=tenant, namespace=namespace)
+        response = requests.get(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def unload_namespace(self, tenant, namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/unload'\
+            .format(tenant=tenant, namespace=namespace)
+        response = requests.put(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def unsubscribes_the_given_subscription_on_all_topics_ona_namespace(self, tenant, namespace, subscription):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/unsubscribe/{subscription}'\
+            .format(tenant=tenant, namespace=namespace, subscription=subscription)
+        response = requests.post(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def delete_a_namespace_bundle_and_all_the_topics_under_it(self, tenant, namespace, bundle):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/{bundle}'\
+            .format(tenant=tenant, namespace=namespace, bundle=bundle)
+        response = requests.post(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def clear_backlog_for_all_topics_on_a_namespace_bundle(self, tenant, namespace, bundle):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/{bundle}/clearBacklog'\
+            .format(tenant=tenant, namespace=namespace, bundle=bundle)
+        response = requests.post(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def clear_backlog_for_a_given_subscription_on_all_topics_on_a_namespace_bundle(self, tenant, namespace, bundle, subscription):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/{bundle}/clearBacklog/{subscription}'\
+            .format(tenant=tenant, namespace=namespace,bundle=bundle, subscription=subscription)
+        response = requests.post(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def split_a_namespace_bundle(self, tenant, namespace, bundle):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/{bundle}/split'\
+            .format(tenant=tenant,namespace=namespace,bundle=bundle)
+        response = requests.put(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def unload_a_namespace_bundle(self,tenant, namespace, bundle):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/{bundle}/unload' \
+            .format(tenant=tenant, namespace=namespace, bundle=bundle)
+        response = requests.put(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def unsubscribes_the_given_subscription_on_all_topics_on_a_namespace_bundle(self, tenant, namespace, bundle, subscribtion):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/{bundle}/unsubscribe/{subscription}'\
+            .format(tenant=tenant, namespace=namespace, bundle=bundle, subscription=subscription)
+        response = requests.post(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
