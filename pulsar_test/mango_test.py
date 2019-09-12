@@ -21,17 +21,19 @@ def test():
     topic=propducer.topic()
     propducer.send('第一条消息'.encode('utf-8'))
     print(topic)
-    print(last_message_id)
+
     print(propducer.last_sequence_id())
 
     #当topic中没有消息的时候消息的id是－１
     #第一条消息的id是0
-    print(mango_client.admin.persistent_topic.list_topics_under_namespace('public','default'))
+    print(mango_client.admin.persistent_topic.get_the_list_of_topics_under_namespace('public','default'))
     print(mango_client.admin.persistent_topic.get_last_commit_message_id_of_topic('public','default','new-topic'))
+    consumer=mango_client.subscribe('new-topic','new-sub')
+
+    mango_client.admin.persistent_topic.peek_nth_message_on_a_topic_subscription('public','default','new-topic','','')
 
 
 
-    subscribe=mango_client.subscribe()
 
 
 
