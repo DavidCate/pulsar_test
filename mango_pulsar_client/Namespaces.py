@@ -639,7 +639,7 @@ class Namespaces():
         }
         return msg
 
-    def unsubscribes_the_given_subscription_on_all_topics_on_a_namespace_bundle(self, tenant, namespace, bundle, subscribtion):
+    def unsubscribes_the_given_subscription_on_all_topics_on_a_namespace_bundle(self, tenant, namespace, bundle, subscription):
         SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/{bundle}/unsubscribe/{subscription}'\
             .format(tenant=tenant, namespace=namespace, bundle=bundle, subscription=subscription)
         response = requests.post(SERVER_URL)
