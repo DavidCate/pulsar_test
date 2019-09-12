@@ -253,3 +253,92 @@ class Namespaces():
         }
         return msg
 
+    def set_maxProducersPerTopic_configuration_on_a_namespace(self,tenant,namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/maxProducersPerTopic'.format(
+            tenant=tenant, namespace=namespace)
+        response = requests.post(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def get_the_message_TTL_for_the_namespace(self,tenant,namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/messageTTL'.format(
+            tenant=tenant, namespace=namespace)
+        response = requests.get(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def set_message_TTL_in_seconds_for_namespace(self,tenant,namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/messageTTL'.format(
+            tenant=tenant, namespace=namespace)
+        response = requests.post(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def number_of_milliseconds_to_wait_before_deleting_a_ledger_segment_which_has_been_offloaded_from_the_Pulsar_cluster_local_storage_(self,tenant,namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/offloadDeletionLagMs'.format(
+            tenant=tenant, namespace=namespace)
+        response = requests.get(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def set_number_of_milliseconds_to_wait_before_deleting_a_ledger_segment_which_has_been_offloaded_from_the_Pulsar_cluster_local_storage(self,tenant,namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/offloadDeletionLagMs'.format(
+            tenant=tenant, namespace=namespace)
+        response = requests.put(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def clear_the_namespace_configured_offload_deletion_lag(self,tenant,namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/offloadDeletionLagMs'.format(
+            tenant=tenant, namespace=namespace)
+        response = requests.delete(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def maximum_number_of_bytes_stored_on_the_pulsar_cluster_for_a_topic(self,tenant,namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/offloadDeletionLagMs'.format(
+            tenant=tenant, namespace=namespace)
+        response = requests.get(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def set_maximum_number_of_bytes_stored_on_the_pulsar_cluster_for_a_topic(self,tenant,namespace):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/offloadThreshold'.format(
+            tenant=tenant, namespace=namespace)
+        response = requests.put(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
+
+    def grant_a_new_permission_to_a_role_on_a_namespace(self,tenant,namespace,role):
+        SERVER_URL = self.__service_url + '/admin/v2/namespaces/{tenant}/{namespace}/permissions/{role}'.format(
+            tenant=tenant, namespace=namespace,role=role)
+        response = requests.post(SERVER_URL)
+        msg = {
+            'http_status': response.status_code,
+            'content': response.content.decode('utf-8')
+        }
+        return msg
