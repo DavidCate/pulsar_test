@@ -17,12 +17,12 @@ class MangoPulsarAdmin():
         self.persistent_topic=PersistentTopic(self.__service_url)
         self.namespaces=Namespaces(self.__service_url)
         self.tenants=Tenants(self.__service_url)
-        self.bookies=Brokers
-        self.brokerstats=BrokerStats
-        self.bookies=Bookies
-        self.clusters=Clusters
-        self.nonpersistenttopic=NonPersistentTopic
-        self.resourcequotas=ResourceQuotas
-        self.schemas=Schemas
+        self.bookies=Brokers(self.__service_url)
+        self.brokerstats=BrokerStats(self.__service_url)
+        self.bookies=Bookies(self.__service_url)
+        self.clusters=Clusters(self.__service_url)
+        self.nonpersistenttopic=NonPersistentTopic(self.__service_url)
+        self.resourcequotas=ResourceQuotas(self.__service_url)
+        self.schemas=Schemas(self.__service_url)
 
 
