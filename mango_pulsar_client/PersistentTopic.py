@@ -146,7 +146,7 @@ class PersistentTopic():
         response = requests.get(SERVER_URL)
         msg = {
             'http_status': response.status_code,
-            'content': response.content.decode('utf-8')
+            'content': ujson.loads(response.content.decode('utf-8'))
         }
         return msg
 
@@ -222,12 +222,12 @@ class PersistentTopic():
         }
         return msg
 
-    def create_a_partitioned_topic(self,tenant,namespace,topic):
+    def create_a_partitioned_topic(self,tenant,namespace,topic,partition_count):
         SERVER_URL = self.__service_url + '/admin/v2/persistent/{tenant}/{namespace}/{topic}/partitions'.format(
             tenant=tenant,
             namespace=namespace,
             topic=topic)
-        response = requests.put(SERVER_URL)
+        response = requests.put(SERVER_URL,json=ujson.dumps(3))
         msg = {
             'http_status': response.status_code,
             'content': response.content.decode('utf-8')
@@ -328,7 +328,7 @@ class PersistentTopic():
         return msg
 
     def peek_nth_message_on_a_topic_subscription(self,tenant,namespace,topic,subName,messagePosition):
-        SERVER_URL = self.__service_url + 'https://pulsar.apache.org/admin/v2/persistent/{tenant}/{namespace}/{topic}/subscription/{subName}/position/{messagePosition}'.format(
+        SERVER_URL = self.__service_url + '/admin/v2/persistent/{tenant}/{namespace}/{topic}/subscription/{subName}/position/{messagePosition}'.format(
             tenant=tenant,
             namespace=namespace,
             topic=topic,

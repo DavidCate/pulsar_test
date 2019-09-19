@@ -12,7 +12,8 @@ def test():
 
     mango_client = mango_pulsar_client.MangoPulsarClient(SERVICE_URL, REST_URL)
 
-    propducer=mango_client.create_producer('new-topic','consumer01')
+    propducer=mango_client.create_producer(TOPIC,'consumer01')
+
 
 
     last_message_id=propducer.last_sequence_id()

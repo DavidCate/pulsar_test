@@ -49,6 +49,7 @@ def test():
     #注 若设置了 message_listener  不允许再使用consumer.receive()
 
     consumer_type= pulsar.ConsumerType.Exclusive
+
     consumer = client.subscribe('topic-1','sub-1',consumer_type=consumer_type,schema=pulsar.schema.BytesSchema())
     print(consumer.topic())
 
