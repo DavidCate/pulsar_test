@@ -38,6 +38,11 @@ def test1():
     id=produ.last_sequence_id()
     print(id)
     print(res)
+
+
+
+
+
     # produ = cli.create_producer('persistent://public/default/xiongzhengxing', 'xxx')
     # for index in range(10):
     #     produ.send(str(index).encode('utf-8'))
