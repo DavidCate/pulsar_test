@@ -1,3 +1,5 @@
+import json
+
 import mango_pulsar_client
 import pulsar
 
@@ -28,6 +30,19 @@ def test1():
     REST_URL = "http://pulsar.aimango.net:8080"
     # cli = pulsar.Client(SERVICE_URL)
     cli=mango_pulsar_client.MangoPulsarClient(SERVICE_URL,REST_URL)
+
+    metainfoTopic='persistent://public/default/taskMetaInfoTopic'
+    phoneNumTopic='persistent://public/default/{taskId}'.format(taskId='xx')
+    metaInfoSub=cli.subscribe(metainfoTopic,'taskMetaInfoSub')
+    while True:
+        msgObj=metaInfoSub.receive();
+        metaInfoSub.acknowledge(msgObj)
+        msg=msgObj.value().decode('utf-8');
+        jsonobj=json.loads(msg)
+        field=jsonobj['']
+        oneSub=cli.subscribe(phoneNumTopic,'')
+        while True:
+            oneSub.receive()
     res=cli.admin.persistent_topic.peek_nth_message_on_a_topic_subscription('public','default','xiongzhengxing','aaa',2)
     produ = cli.create_producer('persistent://public/default/xiongzhengxing', 'xxx')
     produ.send('dsfasdf'.encode('utf-8'))
@@ -38,6 +53,17 @@ def test1():
     id=produ.last_sequence_id()
     print(id)
     print(res)
+
+def test_task_schedule():
+    SERVICE_URL = "pulsar://pulsar.aimango.net:6650"
+    REST_URL = "http://pulsar.aimango.net:8080"
+    cli = mango_pulsar_client.MangoPulsarClient(SERVICE_URL, REST_URL)
+    sub=cli.subscribe('persistent://public/default/taskMetaInfoTopic','liuchaozhi')
+    while True:
+        msg=sub.receive()
+        info=msg.value()
+        print(info)
+
 
 
 
@@ -63,4 +89,5 @@ def test1():
 
 
 if __name__ == '__main__':
-    test1()
+    # test1()
+    test_task_schedule()
